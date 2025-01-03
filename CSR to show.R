@@ -5,8 +5,9 @@ CSR <- read_csv2("CSR_simple.csv", col_names = T)
 
 CSR %>% group_by(species) %>% summarise(c=mean(c), 
                                         s=mean(s),
+                                         r=mean(r)) -> CSR_means
 
-#Create interactive ternary CSR plot                                                                            r=mean(r)) -> CSR_means
+#Create interactive ternary CSR plot                                                                           
 CSRmeans_plot <- CSR_means %>% 
   plot_ly() %>% add_trace(type = 'scatterternary',mode = 'markers', 
                           a = (CSR_means~c),
